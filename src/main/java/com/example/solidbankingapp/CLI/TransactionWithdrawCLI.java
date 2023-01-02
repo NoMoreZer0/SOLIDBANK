@@ -19,10 +19,6 @@ public class TransactionWithdrawCLI {
         String accountID = withdrawDepositOperationCLIUI.requestClientAccountNumber();
         double amount = withdrawDepositOperationCLIUI.requestClientAmount();
         Account acc = accountListingService.getClientWithdrawAccount(clientID, accountID);
-        if (acc == null) {
-            System.out.println("Account does not exist or not allowed to withdraw");
-            return;
-        }
         transactionWithdraw.execute(acc, amount);
     }
 }

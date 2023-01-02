@@ -27,7 +27,7 @@ public class SolidbankingApplication implements CommandLineRunner {
         MyCLI cli = context.getBean(MyCLI.class);
         AccountBasicCLI accountBasicCLI = context.getBean(AccountBasicCLI.class);
         TransactionDepositCLI transactionDepositCLI = context.getBean(TransactionDepositCLI.class);
-          TransactionWithdrawCLI transactionWithdrawCLI = context.getBean(TransactionWithdrawCLI.class);
+        TransactionWithdrawCLI transactionWithdrawCLI = context.getBean(TransactionWithdrawCLI.class);
         String clientID = "1";
         String opString = "1 - show accounts\n2 - create account\n3 - deposit\n4 - withdraw\n5 - transfer\n6 - this message\n7 - exit";
         System.out.println("Welcome to CLI bank service\nEnter the operation number\n" + opString);

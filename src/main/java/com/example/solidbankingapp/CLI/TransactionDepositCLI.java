@@ -22,10 +22,6 @@ public class TransactionDepositCLI {
         String accountID = withdrawDepositOperationCLIUI.requestClientAccountNumber();
         double amount = withdrawDepositOperationCLIUI.requestClientAmount();
         Account acc = accountListingService.getClientAccount(clientID, accountID);
-        if (acc == null) {
-            System.out.println("Account does not exist");
-            return;
-        }
         transactionDeposit.execute(acc, amount);
     }
 }
