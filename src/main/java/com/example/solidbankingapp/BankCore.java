@@ -23,7 +23,7 @@ public class BankCore {
         if (accountType.equals("CHECKING")) accountCreationService.create(AccountType.CHECKING, id, clientID, lastAccountNumber);
         if (accountType.equals("SAVING")) accountCreationService.create(AccountType.SAVING, id, clientID, lastAccountNumber);
         incremenetLastAccountNumber();
-        System.out.println("Bank account created\n");
+        System.out.println("Bank account created");
     }
 
     private void incremenetLastAccountNumber() {

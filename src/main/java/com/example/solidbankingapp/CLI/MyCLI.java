@@ -24,4 +24,18 @@ public class MyCLI implements CLIUI {
         if (acc.equals("FIXED") || acc.equals("SAVING") || acc.equals("CHECKING")) return acc;
         return "";
     }
+
+    @Override
+    public String requestClientAccountNumber() {
+        System.out.println("Type account ID");
+        String id = this.scanner.next();
+        return id;
+    }
+
+    @Override
+    public double requestClientAmount() {
+        System.out.println("Type amount of money");
+        double balance = this.scanner.nextDouble();
+        return balance;
+    }
 }

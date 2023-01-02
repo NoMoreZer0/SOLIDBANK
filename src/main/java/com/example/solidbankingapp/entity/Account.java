@@ -1,9 +1,14 @@
 package com.example.solidbankingapp.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Getter
+@Setter
 public class Account {
     private AccountType accountType;
     private String id;
