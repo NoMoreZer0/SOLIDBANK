@@ -3,10 +3,12 @@ package com.example.solidbankingapp.service.impl;
 import com.example.solidbankingapp.DAO.AccountDAO;
 import com.example.solidbankingapp.entity.*;
 import com.example.solidbankingapp.service.AccountCreationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AccountCreationServiceImpl implements AccountCreationService {
+    @Autowired
     private AccountDAO accountDAO;
 
     public AccountCreationServiceImpl(AccountDAO accountDAO) {
@@ -22,6 +24,6 @@ public class AccountCreationServiceImpl implements AccountCreationService {
             case SAVING -> account = new SavingAccount(accountNumber, clientID, 0.0);
             case CHECKING -> account = new CheckingAccount(accountNumber, clientID, 0.0);
         }
-        accountDAO.createNewAccount(account);
+        accountDAO.save(account);
     }
 }

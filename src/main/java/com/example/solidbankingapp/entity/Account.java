@@ -1,28 +1,21 @@
 package com.example.solidbankingapp.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Getter
-@Setter
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Account {
+    @Enumerated(EnumType.STRING)
     private AccountType accountType;
+    @Id
     private String id;
     private String clientID;
     private double balance;
     private boolean withdrawAllowed;
-
-    public Account(AccountType accountType, String id, String clientID, double balance, boolean withdrawAllowed) {
-        this.accountType = accountType;
-        this.id = id;
-        this.clientID = clientID;
-        this.balance = balance;
-        this.withdrawAllowed = withdrawAllowed;
-    }
 
     @Override
     public String toString() {
