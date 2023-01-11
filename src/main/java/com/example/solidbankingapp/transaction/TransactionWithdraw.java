@@ -18,10 +18,10 @@ public class TransactionWithdraw {
             if (account == null) System.out.println("Account does not exist or not allowed to withdraw");
             else if (amount > account.getBalance()) System.out.println("Insufficient amount of money in account");
             assert account != null;
-            transactionDAO.addTransaction(new Transaction(account.getClientID(), account.getId(), amount, "Withdraw", true));
+            transactionDAO.save(new Transaction(account.getClientID(), account.getId(), amount, "Withdraw", true));
             return;
         }
-        transactionDAO.addTransaction(new Transaction(account.getClientID(), account.getId(), amount, "Withdraw", false));
+        transactionDAO.save(new Transaction(account.getClientID(), account.getId(), amount, "Withdraw", false));
         accountWithdrawService.withdraw(amount, account);
     }
 
