@@ -2,22 +2,30 @@ package com.example.solidbankingapp.service.impl;
 
 import com.example.solidbankingapp.DAO.AccountDAO;
 import com.example.solidbankingapp.entity.Account;
+import com.example.solidbankingapp.exception.WithdrawNotAllowedException;
 import com.example.solidbankingapp.service.AccountWithdrawService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AccountWithdrawServiceImpl implements AccountWithdrawService {
-    @Autowired
     private AccountDAO accountDAO;
 
+    @Autowired
+    public AccountWithdrawServiceImpl(AccountDAO accountDAO) {
+        this.accountDAO = accountDAO;
+    }
+
     @Override
-    public void withdraw(double amount, Account account) {
+    public String withdraw(double amount, Account account) throws NullPointerException, WithdrawNotAllowedException {
         double oldBalance = account.getBalance();
+        if (oldBalance < amount) {
+            throw new WithdrawNotAllowedException("Insufficient amount of balance");
+        }
         double newBalance = oldBalance - amount;
         accountDAO.deleteById(account.getId());
         account.setBalance(newBalance);
         accountDAO.save(account);
-        System.out.println(amount + "$ transferred from " + account.getId() + " account");
+        return amount + "$ transferred from " + account.getId() + " account";
     }
 }

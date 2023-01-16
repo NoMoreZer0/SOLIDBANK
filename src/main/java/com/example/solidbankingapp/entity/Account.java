@@ -9,8 +9,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Account {
-    @Enumerated(EnumType.STRING)
-    private AccountType accountType;
+    private String accountType;
     @Id
     private String id;
     private String clientID;

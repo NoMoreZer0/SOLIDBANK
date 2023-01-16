@@ -8,22 +8,31 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AccountCreationServiceImpl implements AccountCreationService {
-    @Autowired
     private AccountDAO accountDAO;
+    private long lastAccountNumber = 1;
 
+    @Autowired
     public AccountCreationServiceImpl(AccountDAO accountDAO) {
         this.accountDAO = accountDAO;
     }
 
     @Override
-    public void create(AccountType accountType, long bankID, String clientID, long accountID) {
-        String accountNumber = String.format("%03d%06d", 1, accountID);
-        Account account = null;
-        switch (accountType) {
-            case FIXED -> account = new FixedAccount(accountNumber, clientID, 0.0);
-            case SAVING -> account = new SavingAccount(accountNumber, clientID, 0.0);
-            case CHECKING -> account = new CheckingAccount(accountNumber, clientID, 0.0);
+    public String createNewAccount(String accountType, String clientID) {
+        if (accountType == null) {
+            return "Undefined AccountTypeRequest";
         }
+        String accountNumber = String.format("%03d%06d", 1, lastAccountNumber);
+        Account account = null;
+        if (accountType.equals("FIXED")) account = new FixedAccount(accountNumber, clientID, 0.0);
+        if (accountType.equals("SAVING")) account = new SavingAccount(accountNumber, clientID, 0.0);
+        if (accountType.equals("CHECKING")) account = new CheckingAccount(accountNumber, clientID, 0.0);
+        incrementLastAccountNumber();
+        assert account != null;
         accountDAO.save(account);
+        return "Bank account created";
+    }
+
+    private void incrementLastAccountNumber() {
+        lastAccountNumber++;
     }
 }

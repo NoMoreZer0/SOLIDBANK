@@ -21,8 +21,4 @@ public class AccountBasicCLI {
     public void getAccounts(String clientID) {
         System.out.println(accountListingService.getClientAccounts(clientID));
     }
-
-    public void createAccountRequest(String clientID) {
-        bankCore.createNewAccount(createAccountOperationUI.requestAccountType(clientID), clientID);
-    }
 }

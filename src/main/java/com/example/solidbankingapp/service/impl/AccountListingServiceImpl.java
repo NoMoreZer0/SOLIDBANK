@@ -2,20 +2,18 @@ package com.example.solidbankingapp.service.impl;
 
 import com.example.solidbankingapp.DAO.AccountDAO;
 import com.example.solidbankingapp.entity.Account;
-import com.example.solidbankingapp.entity.AccountType;
 import com.example.solidbankingapp.service.AccountListingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class AccountListingServiceImpl implements AccountListingService {
-    @Autowired
     private AccountDAO accountDAO;
 
+    @Autowired
     public AccountListingServiceImpl(AccountDAO accountDAO) {
         this.accountDAO = accountDAO;
     }
@@ -31,7 +29,7 @@ public class AccountListingServiceImpl implements AccountListingService {
     }
 
     @Override
-    public List<Account> getClientAccountsByType(String clientID, AccountType accountType) {
+    public List<Account> getClientAccountsByType(String clientID, String accountType) {
         List<Account> allAccounts = (List<Account>) accountDAO.findAll();
         List<Account> clientAccountsByType = new ArrayList<>();
         for (Account acc : allAccounts) {
@@ -59,7 +57,7 @@ public class AccountListingServiceImpl implements AccountListingService {
         List<Account> allAccounts = (List<Account>) accountDAO.findAll();
         Account clientAcc = null;
         for (Account acc : allAccounts) {
-            if (acc.getClientID().equals(clientID) && acc.getId().equals(accountID) && (acc.getAccountType().equals(AccountType.SAVING) || acc.getAccountType().equals(AccountType.CHECKING))) {
+            if (acc.getClientID().equals(clientID) && acc.getId().equals(accountID) && (acc.getAccountType().equals("SAVING") || acc.getAccountType().equals("CHECKING"))) {
                 clientAcc = acc;
             }
         }

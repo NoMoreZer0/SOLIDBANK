@@ -8,6 +8,6 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class SavingAccount extends AccountWithdraw {
     public SavingAccount(String id, String clientID, double balance) {
-        super(AccountType.SAVING, id, clientID, balance, true);
+        super("SAVING", id, clientID, balance, true);
     }
 }

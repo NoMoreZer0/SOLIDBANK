@@ -9,6 +9,6 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class FixedAccount extends AccountDeposit {
     public FixedAccount(String accountID, String clientID, double balance) {
-        super(AccountType.FIXED, accountID, clientID, balance, false);
+        super("FIXED", accountID, clientID, balance, false);
     }
 }

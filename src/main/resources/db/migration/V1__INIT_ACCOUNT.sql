@@ -3,5 +3,5 @@ CREATE TABLE IF NOT EXISTS account (
     clientID VARCHAR(60) NOT NULL,
     balance NUMERIC(6, 3) NOT NULL,
     withdrawAllowed BIT NOT NULL,
-    accountType VARCHAR(60) NOT NULL
+    accountTypeRequest VARCHAR(60) NOT NULL
 );
