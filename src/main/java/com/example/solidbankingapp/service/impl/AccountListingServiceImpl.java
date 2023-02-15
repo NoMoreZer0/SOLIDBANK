@@ -11,11 +11,16 @@ import java.util.List;
 
 @Component
 public class AccountListingServiceImpl implements AccountListingService {
-    private AccountDAO accountDAO;
+    private final AccountDAO accountDAO;
 
     @Autowired
     public AccountListingServiceImpl(AccountDAO accountDAO) {
         this.accountDAO = accountDAO;
+    }
+
+    @Override
+    public List<Account> getAllAccounts() {
+        return (List<Account>) accountDAO.findAll();
     }
 
     @Override

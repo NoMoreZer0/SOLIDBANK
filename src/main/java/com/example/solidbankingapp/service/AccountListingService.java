@@ -9,4 +9,5 @@ public interface AccountListingService {
     List<Account> getClientAccountsByType(String clientID, String accountType);
     Account getClientAccount(String clientID, String accountID);
     Account getClientWithdrawAccount(String clientID, String accountID);
+    List<Account> getAllAccounts();
 }

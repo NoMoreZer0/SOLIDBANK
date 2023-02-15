@@ -24,11 +24,11 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<Transaction> getTransactionByID(String accountID) {
+    public List<Transaction> getTransactionByID(String clientID, String accountID) {
         List<Transaction> transactions = (List<Transaction>) transactionDAO.findAll();
         List<Transaction> accountTransactions = new ArrayList<>();
         for (Transaction transaction : transactions) {
-            if (transaction.getAccountID().equals(accountID)) {
+            if (transaction.getClientID().equals(clientID) && transaction.getAccountID().equals(accountID)) {
                 accountTransactions.add(transaction);
             }
         }
