@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .anyRequest().authenticated()
                 .and()
                 .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore    (jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
